@@ -1,0 +1,9 @@
+/temp/*
+/data/*
+/__pycache__/*
+/.vscode/*
+*.p
+*.pyc
+.bash_history
+.python_history
+
