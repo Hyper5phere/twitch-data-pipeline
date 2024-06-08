@@ -1,1 +1,4 @@
 py7zr
+requests
+matplotlib
+pandas
