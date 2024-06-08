@@ -42,8 +42,10 @@ with sqlite3.connect(config.DB_PATH) as conn:
         logger.info("Reading data file: %s", fpath)
         data_frame = pd.read_pickle(fpath)
         table_name = os.path.basename(fpath).replace(".pkl", "")
-        # Identify datetime columns
-        datetime_cols = data_frame.select_dtypes(include=['datetime64[ns]', 'datetime64[ns, UTC]']).columns
+        # drop fragments column (not valid SQL type)
+        data_frame.drop(columns=['fragments'], inplace=True)
+        # Define datetime columns
+        datetime_cols = ["created_at", "updated_at"]
         # Convert datetime columns to ISO 8601 strings
         for col in datetime_cols:
             data_frame[col] = data_frame[col].astype(str)
