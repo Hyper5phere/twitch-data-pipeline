@@ -1,5 +1,6 @@
 /temp/*
 /data/*
+!/data/.gitkeep
 /__pycache__/*
 /.vscode/*
 *.p
